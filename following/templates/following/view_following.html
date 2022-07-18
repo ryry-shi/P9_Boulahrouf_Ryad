@@ -1,0 +1,13 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h1>Bonjour {{ user }}</h1>
+<h2>Voici vos abonnés, {{followed.user}}</h2>
+<h2>>Voici vos abonnements</h2>
+<a href="{% url 'logout' %}">Se déconnecter</a>
+
+{% endblock %}
+
+

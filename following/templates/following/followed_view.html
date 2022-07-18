@@ -1,0 +1,7 @@
+{% extends "core/base.html" %}
+
+{%  block content %}
+
+<p> {{ user }}</p>
+<a href="{% url 'following:followed' %}" >Si vous voulez vous abonnés a un utilisateurs </a>
+{% endblock %}

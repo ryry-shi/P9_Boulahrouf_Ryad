@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+    <p> Votre billet {{ ticket.title }} </p>
+    <p> Description {{ ticket.description}}</p>
+    <p> L'auteur: {{ ticket.user }} </p>
+    <p> {{ticket.image}}</p>
+    <p> {{ticket.time_created}}</p>
+    <a href="{% url 'ticketing:create_review' ticket.id %}"> Cliquer pour aller voir la review </a>
+{% endblock %}

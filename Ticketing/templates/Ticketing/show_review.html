@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<p> Le body {{review.body}}<p>
+    <p>L'utilisateur {{review.user}},</p>   
+    <p> headline  "{{review.headline}}"</p>
+    <p> ticket "{{review.ticket}}"    </p>
+    <p> rating {{review.rating}}</p>
+{% endblock %}

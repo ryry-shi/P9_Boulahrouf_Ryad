@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+  <h1> Monsieur Madame {{ user }}</h1>
+  <h2>Enregistrer votre billet</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
+  </form>
+  <a href=" {% url 'logout' %} "> Si vous voulez vous déconnecter cliquer ici</a>
+{% endblock %}
+

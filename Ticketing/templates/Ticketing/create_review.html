@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+<h1> Monsieur Madame {{ user }}</h1>
+<h2>Enregistrer votre review</h2>
+<p>print</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" href="{% url 'ticketing:create_review' ticket_id%}">Votre review</button>
+</form>
+<a href=" {% url 'logout' %} "> Si vous voulez vous déconnecter cliquer ici</a>
+{% endblock %}

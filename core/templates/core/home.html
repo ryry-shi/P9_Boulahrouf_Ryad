@@ -1,0 +1,11 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+<p>Bonjour {{ user }} </p>
+<a a href="{% url 'ticketing:create_ticket' %}">Création de Votre Ticket</a>
+<a a href="{% url 'following:following_view'%}">Votre page d'abonnés</a>
+<a href="{% url 'logout' %}">Se déconnecter</a>
+{% endblock %}
+
+

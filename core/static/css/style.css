@@ -1,0 +1,12 @@
+p {
+    color: blue;
+  }
+
+
+h1{
+  position: center;
+  color:red;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 5px;
+}
