@@ -1,7 +1,7 @@
 
 from django.shortcuts import redirect, render
 from Ticketing.forms import FormReview, FormTicketing
-from Ticketing.models import Review, Ticket
+from Ticketing.models import Ticket
 
 
 def create_ticket(request):
@@ -32,4 +32,13 @@ def create_review(request, ticket_id: int):
         form = FormReview() 
         return render(request, "Ticketing/create_review.html", {"form":form,
         "ticket_id":ticket_id})
+
+def del_ticketing(request, ticket_id: int):
+    form = Ticket.objects.get(pk=ticket_id)
+    if request.method == 'POST':    
+        form.delete()
+        return redirect('home')
+    else:
+        return render(request, "Ticketing/del_ticket.html", {"form": form, "ticket_id":ticket_id})
+
 

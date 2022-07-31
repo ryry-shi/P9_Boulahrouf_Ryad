@@ -7,5 +7,6 @@
     <p> L'auteur: {{ ticket.user }} </p>
     <p> {{ticket.image}}</p>
     <p> {{ticket.time_created}}</p>
+    <a href="{% url 'ticketing:del_ticketing' ticket.id %}">supprimer</a>
     <a href="{% url 'ticketing:create_review' ticket.id %}"> Cliquer pour aller voir la review </a>
 {% endblock %}

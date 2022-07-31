@@ -1,10 +1,11 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-  <h2>Se connecter</h2>
+  <h1>Bonjour {{ user }}</h1>
+  <h2>Choissisez a quel utilisateurs vous voulez vous abonner</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" href="{% url 'following:followed' %}">Abonnez-vous</button>
+    <button type="submit" href="{% url 'following:follow' %}">Abonnez-vous</button>
   </form>
 {% endblock %}

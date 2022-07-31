@@ -4,10 +4,10 @@
 {% block content %}
 
 <h1>Bonjour {{ user }}</h1>
-<h2>Voici vos abonnés, {{followed.user}}</h2>
-<h2>>Voici vos abonnements</h2>
-<a href="{% url 'logout' %}">Se déconnecter</a>
-
+<h2>Vous vous êtes abonner à {{form.followed_user}}</h2>
+<ul>
+<li><a href="{% url 'following:following_view' %}"> Retourner à la page de profil </a></li>
+<li><a href="{% url 'home' %}">Retourner à la page d'accueil</a></li>
+<li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+</ul>
 {% endblock %}
-
-

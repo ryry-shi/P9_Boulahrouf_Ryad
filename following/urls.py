@@ -1,12 +1,15 @@
+from unicodedata import name
 from django.urls import path
-from following.views import followed, following_view
+from following.views import follow, following_view, followed_table, del_ticketing
 
 
 app_name = "following"
 
 urlpatterns = [
-    path("followed/", followed, name="followed"),
-    path("view_followed", following_view, name="following_view")
+    path("follow/", follow, name="follow"),
+    path("view_followed/", following_view, name="following_view"),
+    path('followed_table/', followed_table, name="followed_table"),
+    path('followed_table/<int:ticket_id>/del_ticketing', del_ticketing, name="del_ticketing")
 ]
 
 

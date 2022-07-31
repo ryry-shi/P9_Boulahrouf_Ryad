@@ -4,4 +4,6 @@ from .models import Following
 class FormFollowow(ModelForm):
     class Meta:
         model = Following
-        fields = ["user"]
+        fields = ["followed_user"]
+
+
