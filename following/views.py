@@ -32,13 +32,17 @@ def followed_table(request):
     followings = request.user.followings.all()
     followers = request.user.followers.all()
     if request.method == "POST":
-        form = FormFollowow(request.POST).save(commit=False)
-        form.user = request.user
-        form.save()
+        print("aaa", request.POST.get("followed_user"))
+        form = FormFollowow(request.POST)
+        if form.is_valid():
+            print(form.clean())
+        follow = form.save(commit=False)
+        follow.user = request.user
+        follow.save()
         return render(request, "following/followed_table.html", {'followings': followings, 'followers':followers, "form":form})
     else:
         form = FormFollowow()
-    return render(request, "following/followed_table.html", {'form':form,'followings': followings, 'followers':followers})
+    return render(request, "following/followed_table.html", {'followings': followings, 'followers':followers, "form":form})
 
 
 def del_ticketing(request, ticket_id: int):

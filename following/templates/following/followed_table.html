@@ -4,10 +4,10 @@
   <h1>Vos abonnement {{ user }}</h1>
   <h1>Bonjour {{ user }}</h1>
   <h2>Choissisez a quel utilisateurs vous voulez vous abonner</h2>
-  <form method="post">
+  <form action="/followed_table/" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" href="{% url 'following:followed_table' %} ">Abonnez-vous</button>
+    <input type="text" label="followed_user" name="followed_user">
+    <button type="submit" ">Abonnez-vous</button>
   </form>
   <ul> 
     {% for following in followings %}
