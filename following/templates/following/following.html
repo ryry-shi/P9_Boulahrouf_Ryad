@@ -4,14 +4,14 @@
   <h1>Vos abonnement {{ user }}</h1>
   <h1>Bonjour {{ user }}</h1>
   <h2>Choissisez a quel utilisateurs vous voulez vous abonner</h2>
-  <form action="/followed_table/" method="post">
+  <form action="/following/" method="post">
     {% csrf_token %}
     <input type="text" label="followed_user" name="followed_user">
     <button type="submit" ">Abonnez-vous</button>
   </form>
   <ul> 
     {% for following in followings %}
-          <li> Vous vous êtes abonner au profil de {{following.followed_user}} <a href="{% url 'following:del_ticketing' following.id %}"> Se désabonner</a></li>
+          <li> Vous vous êtes abonner au profil de {{following.followed_user}} <a href="{% url 'following:remove_following' following.followed_user.id %}"> Se désabonner</a></li>
     {% endfor %}
 </ul>
 <h1>Vos abonnés</h>
@@ -20,10 +20,8 @@
           <li> Vous êtes suivis par {{follower.followed_user}} </li>
     {% endfor %}
 </ul>
-<h1>Vos abon
   <ul>
-    <li><a href="{% url 'following:following_view' %}"> Retourner à la page de profil </a></li>
     <li><a href="{% url 'home' %}">Retourner à la page d'accueil</a></li>
     <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-    </ul>
+  </ul>
 {% endblock %}
