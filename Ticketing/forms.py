@@ -6,7 +6,7 @@ from .models import Review, Ticket
 class FormTicketing(ModelForm):
     class Meta:
         model = Ticket
-        fields = ["title", "description", "image","user"]
+        fields = ["title", "description", "image"]
 
 class FormReview(ModelForm):
     class Meta:

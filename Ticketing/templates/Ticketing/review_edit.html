@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+{{ for i in ticket}}
+    {i}
+{endfor}
+<p>{{ ticket  }}</p>
+    <p> Votre billet {{ review.title }} </p>
+    <p> Description {{ review.description}}</p>
+    <p> L'auteur: {{ review.user }} </p>
+    <p> {{review.image}}</p>
+    <p> {{review.time_created}}</p>
+    <button text="submit"><a href="{% url 'ticketing:review_edit' ticket.id %}"> Cliquer pour aller voir la review </a></button>
+{% endblock %}

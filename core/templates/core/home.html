@@ -4,9 +4,10 @@
 {% block content %}
 <p>Bonjour {{ user }} </p>
 <ul>
-    <li><a href="{% url 'ticketing:create_ticket' %}">Création de Votre Ticket</a></li>
+    <li><a href="{% url 'ticketing:show' %}">Page de ticket/critique</a></li>
     <li><a href="{% url 'following:following' %}">Page de Profil</a></li>
 </ul>
+
 <a href="{% url 'logout' %}">Se déconnecter</a>
 {% endblock %}
 

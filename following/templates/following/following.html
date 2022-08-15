@@ -1,15 +1,18 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-  <h1>Vos abonnement {{ user }}</h1>
-  <h1>Bonjour {{ user }}</h1>
-  <h2>Choissisez a quel utilisateurs vous voulez vous abonner</h2>
-  <form action="/following/" method="post">
+
+  <div>
+  <h1>
+    Suivre d'autre utilisateurs
+  </h1>
+  <form  action="/following/" method="post">
     {% csrf_token %}
-    <input type="text" label="followed_user" name="followed_user">
-    <button type="submit" ">Abonnez-vous</button>
+    <input id="subscribe" type="text" label="followed_user" name="followed_user">
+    <button type="submit" ">Envoyer</button>
   </form>
-  <ul> 
+  </div>
+  <ul class="follower_user"> 
     {% for following in followings %}
           <li> Vous vous êtes abonner au profil de {{following.followed_user}} <a href="{% url 'following:remove_following' following.followed_user.id %}"> Se désabonner</a></li>
     {% endfor %}
@@ -20,7 +23,7 @@
           <li> Vous êtes suivis par {{follower.followed_user}} </li>
     {% endfor %}
 </ul>
-  <ul>
+  <ul class="follower_user">
     <li><a href="{% url 'home' %}">Retourner à la page d'accueil</a></li>
     <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
   </ul>

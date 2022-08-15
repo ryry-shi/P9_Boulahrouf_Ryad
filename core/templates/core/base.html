@@ -1,16 +1,21 @@
-{% load static %} 
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/core.css' %}" rel="stylesheet">
   <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page d'accueil</title>
 </head>
-<body>
-    <h1>LITReview</h1>
+
+<body>    
+    <div class="titre">
+      <h1>LITReview</h1>
+    </div>
+  {% block content %} 
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -18,9 +23,8 @@
         {% endfor %}
     </ul>
   {% endif %}
-    {% block content %} 
     
-    {% endblock content %}
-    
+  {% endblock content %}
+
 </body>
 </html>

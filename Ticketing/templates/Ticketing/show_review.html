@@ -7,4 +7,6 @@
     <p> headline  "{{review.headline}}"</p>
     <p> ticket "{{review.ticket}}"    </p>
     <p> rating {{review.rating}}</p>
+    <button type="submit"><a href="{% url 'ticketing:review_edit' review.id %}">Créer une critique</a></button>
+
 {% endblock %}
