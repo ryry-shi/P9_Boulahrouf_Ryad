@@ -1,6 +1,12 @@
 {% extends "core/base.html" %}
 
+
 {% block content %}
+  
+  <div class="register">
+    <p>Inscrivez-vous maintenant</p>
+    <a href="{% url 'register' %}">S'inscrire</a>
+  </div>
   <div class="login">
   <h2>Se connecter</h2>
   <form method="post">
@@ -9,8 +15,6 @@
   <button type="submit" href="{% url 'login' %}"> Se connecter </button>
   </div>
   </form>
-  <div class="register">
-    <p>Inscrivez-vous maintenant</p>
-    <a href="{% url 'register' %}">S'inscrire</a>
-  </div>
+
+
 {% endblock %}

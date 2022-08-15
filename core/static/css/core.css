@@ -1,15 +1,17 @@
 body{
+  height:100%;
   padding: 0px;
-  border: 0px;
+  border: 1px solid black;
   font-size: 16px;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .titre{
-  margin: 20px auto;
-  width: 80%;
+  margin: 1px auto;
+  margin-top:0;
+  width: 100%;
   padding: 15px;
-  border: 10px solid green;
+  border: 1px solid black;
   text-align: center;
 }
 
@@ -52,6 +54,57 @@ button{
 }
 
 .follower_user li{
+  list-style: "";
   border:1px solid black;
   margin: auto;
+  width: 50%;
+}
+
+.unsucrbibed{
+  display:inline;
+  align-self: center;
+  margin: 15px auto;
+  border: 1px solid black;
+}
+
+.ticket{
+  width: 150px;
+}
+
+.review{
+  width: 150px;
+}
+
+
+#id_title{
+  margin:20px;
+  padding:10px;
+  width:80%;
+}
+
+#id_description{
+  margin:10px;
+  padding:10px;
+  width:80%;
+  height:200px;
+}
+
+#id_headline{
+  margin:20px;
+  padding:10px;
+  width:80%;
+}
+
+#id_body{
+  margin:10px;
+  padding:10px;
+  width:80%;
+  height:200px;
+}
+#post_review{
+  border-top: 1px solid black;
+}
+
+#ticket_request{
+  border:1px solid black;
 }
