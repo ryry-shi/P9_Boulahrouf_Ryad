@@ -1,18 +1,20 @@
 body{
-  height:100%;
-  padding: 0px;
+  height: 80%;
   border: 1px solid black;
   font-size: 16px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
+  font-family: Georgia, 'Times New Roman', Times, serif;}
 
+.test{
+  margin-top: 0px;
+  margin-left: 0px;
+}
 .titre{
-  margin: 1px auto;
-  margin-top:0;
-  width: 100%;
   padding: 15px;
+  width: auto;
   border: 1px solid black;
   text-align: center;
+  margin: 1px auto;
+  margin-top: 0;
 }
 
 div{
@@ -20,6 +22,9 @@ div{
   width: 80%;
   padding: 15px;
 }
+li{
+  list-style: "";
+  }
 
 .login{
   text-align: right;
@@ -53,19 +58,19 @@ button{
   height: 50px;
 }
 
+
 .follower_user li{
   list-style: "";
-  border:1px solid black;
+  border: 1px solid black;
   margin: auto;
-  width: 50%;
+  font-size: 24px;
 }
 
+
 .unsucrbibed{
-  display:inline;
-  align-self: center;
-  margin: 15px auto;
-  border: 1px solid black;
-}
+  float: right;
+  border-left: 1px solid black;
+  }
 
 .ticket{
   width: 150px;
@@ -107,4 +112,8 @@ button{
 
 #ticket_request{
   border:1px solid black;
+}
+
+#id_rating  {
+  color:red;
 }
