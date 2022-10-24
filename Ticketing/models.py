@@ -10,8 +10,6 @@ class Ticket(models.Model):
     image = models.ImageField(null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
-    class Meta():
-        constraints = [models.UniqueConstraint(fields=['title', 'description','user','image',"time_created",], name='unique Ticketing')]
 
 class Review(models.Model):
     ticket = models.OneToOneField(Ticket,on_delete=models.CASCADE)
@@ -20,4 +18,8 @@ class Review(models.Model):
     headline = models.CharField(max_length=128)
     body = models.TextField(max_length=8192, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta():
+        constraints = [models.UniqueConstraint(fields=['user'], name='unique review')]
+
 # Create your models here.

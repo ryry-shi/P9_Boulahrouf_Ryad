@@ -23,7 +23,6 @@ def following(request):
 
 
 def remove_following(request, followed_user_id):
-    print(followed_user_id)
     followed_user_id = User.objects.get(pk=followed_user_id)
     following = Following.objects.get(user=request.user, followed_user_id=followed_user_id)    
     following.delete()

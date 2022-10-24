@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+{% block content %}
+<form method="post" enctype="multipart/form-data" id="form_ticket">
+    {% csrf_token %}
+    {{ ticket_form.as_p }}
+    {{ review_form.as_p }}
+  <button type="submit" href="{% url 'ticketing:create_ticket_with_review' %}">Sauvegarder</button>
+</form>
+{% endblock %}

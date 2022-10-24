@@ -12,20 +12,19 @@
     <button type="submit" ">Envoyer</button>
   </form>
   </div>
+  <h1>Vos abonnés</h1>
+
   <ul class="follower_user"> 
     {% for following in followings %}
       <li> {{following.followed_user}}   <a class="unsucrbibed" href="{% url 'following:remove_following' following.followed_user.id %}"> Se désabonner</a>
       </li>
     {% endfor %}
 </ul>
-<h1>Vos abonnés</h>
+<h1>Vos abonnements</h1>
   <ul class="follower_user">
     {% for follower in followers %}
           <li>{{follower.followed_user}} </li>
     {% endfor %}
 </ul>
-</h1>
-  <a href="{% url 'home' %}">Retourner à la page d'accueil</a>
-  <a href="{% url 'logout' %}">Se déconnecter</a>
 
 {% endblock %}

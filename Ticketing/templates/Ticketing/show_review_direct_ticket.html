@@ -1,0 +1,26 @@
+
+{% block content %}
+{% if ticket.review.user == user %}
+<p style="text-align:right">{{ticket.time_created}}</p>
+{% if ticket.user == user %}
+    <p> Vous avez demandé une critique</p>
+{% else %}
+    <p> {{ticket.user}} a demandé une critique </p>
+{% endif %}          
+<p>{{ticket.title}} </p>
+<p>{{ticket.description}} </p>
+<p><img height="100" src="/media/{{ticket.image}}"></p>
+{{ review.ticket_review }}
+    <p>Vous avez publié une critique sur l'un de vos ticket</p>
+{% else %}
+    <p>Vous avez publié une critique sur le ticket de {{ ticket.review.user }}</p>
+{% endif %}
+<p>{{ticket.review.headline}}</p>
+<p>{{ticket.review.body}} - {{ticket.review.rating}}</p>
+{% endblock %}
+
+
+<!-- 
+
+    faire condition pour demain pour séparer les critique réponse avec les sans réponse
+ -->

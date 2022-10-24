@@ -1,12 +1,19 @@
-{% extends "core/base.html" %}
-
 {% block content %}
+<table>
+    <tbody>
+        <td>
+            <p style="text-align:right">{{ticket.time_created}}</p>
+            {{ review.ticket_review }}
+            {% if ticket.review.user == user %}
 
-<p> Le body {{review.body}}<p>
-    <p>L'utilisateur {{review.user}},</p>   
-    <p> headline  "{{review.headline}}"</p>
-    <p> ticket "{{review.ticket}}"    </p>
-    <p> rating {{review.rating}}</p>
-    <button type="submit"><a href="{% url 'ticketing:review_edit' review.id %}">Créer une critique</a></button>
-
+            <p>Vous avez publié une critique sur l'un de vos ticket</p>
+            {% else %}
+            <p>Vous avez publié une critique sur le ticket de {{ ticket.review.user }}</p>
+            {% endif %}          
+            <p>{{ticket.review.headline}}</p>
+            <p>{{ticket.review.body}} - {{ticket.review.rating}}</p>
+            <p><img height="100" src="/media/{{ticket.image}}"></p>
+        </td>
+    </tbody>
+</table>
 {% endblock %}

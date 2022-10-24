@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib import admin
 from django.db import models
 
+# CHANGEMENT DE CLASSE 
 class User(AbstractUser):
     pass
 

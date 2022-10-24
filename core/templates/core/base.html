@@ -15,6 +15,17 @@
 <body>    
     <div class="titre">
       <h1>LITReview</h1>
+      <nav>
+        {% if user.is_authenticated %}
+        <span>{{ user.username }}</span>
+        <span><a href="{% url 'ticketing:flux' %}">Flux</a></span>
+        <span><a href="{% url 'ticketing:posts' %}">Posts</a></span>
+        <span><a href="{% url 'following:following' %}">Abonnements</a></span>
+        <span><a href="{% url 'logout' %}">Se déconnecter</a></span>
+
+       {% endif %}
+
+      </nav>
     </div>
   {% block content %} 
     {% if messages %}

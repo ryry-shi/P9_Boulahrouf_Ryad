@@ -1,20 +1,31 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout, login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import RegisterForm
 
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
+        print(form)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data["password"])
+            user.set_password(form.cleaned_data["password1"])
             user.save()
-        return redirect('login')
+            return redirect('login')
     else:
         form = RegisterForm() 
     return render(request, "core/register.html", {'form': form})
+
+# def register_view(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#         return redirect('login')
+#     else:
+#         form = UserCreationForm() 
+#     return render(request, "core/register.html", {'form': form})
 
 def home_view(request):
     return render(request,
@@ -28,7 +39,7 @@ def logout_view(request):
 def login_view(request):
     # si utilisateur est déja connecter on le redirige vers home
     if request.user.is_authenticated:
-        return redirect("home")
+        return redirect("ticketing:flux")
     # si elle est en mode POST alors l'utilisateur alors a remplis le formulaire et on l'authentifie
     if request.method == 'POST':
         form = AuthenticationForm(request=request, data=request.POST)
@@ -39,7 +50,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, 'Vous êtes bien connectés')
-                return redirect('home')
+                return redirect('ticketing:flux')
             else:
                 return redirect('login')
     # si la requète est en mode get alors on affiche la page avec un formulaire vide
@@ -49,5 +60,5 @@ def login_view(request):
 
 def index_view(request):
     if request.user.is_authenticated:
-        return redirect("home")
+        return redirect("ticketing:flux")
     return redirect('login')

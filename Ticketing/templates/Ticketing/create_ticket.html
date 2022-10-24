@@ -1,7 +1,7 @@
-{% extends "core/base.html" %}
 
 {% block content %}
-  <form method="post" id="form_ticket">
+
+  <form method="post" enctype="multipart/form-data" id="form_ticket">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>

@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Posts</h1>
+    <table>
+    {% for ticket in tickets %} 
+    {% if ticket.review.ticket  %}
+        {% include "Ticketing/show_review.html" %}
+        <span><Button><a href="{% url 'ticketing:review_edit' ticket.review.id %}">Modifier</a></Button></span>
+        <span><Button><a href="{% url 'ticketing:remove_review' ticket.review.id %}">Supprimer</a></Button></span>
+    {% elif ticket and ticket.review.user %}
+        {% include "Ticketing/show_review_direct_ticket.html" %}
+    {% else ticket.review is None %}
+    {% endif %}
+    {% endfor %}    
+    </table>
+{% endblock %}
+

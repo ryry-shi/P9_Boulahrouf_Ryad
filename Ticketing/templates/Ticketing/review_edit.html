@@ -1,14 +1,14 @@
 {% extends "core/base.html" %}
-
 {% block content %}
-{{ for i in ticket}}
-    {i}
-{endfor}
-<p>{{ ticket  }}</p>
-    <p> Votre billet {{ review.title }} </p>
-    <p> Description {{ review.description}}</p>
-    <p> L'auteur: {{ review.user }} </p>
-    <p> {{review.image}}</p>
-    <p> {{review.time_created}}</p>
-    <button text="submit"><a href="{% url 'ticketing:review_edit' ticket.id %}"> Cliquer pour aller voir la review </a></button>
+<p>Modifier votre critique</p>
+<p>Vous êtes en train de poster en réponse à</p>
+<p style="text-align:right">{{ticket.time_created}}</p>
+<p>{{review.ticket.user}} a demandé une critique </p>            
+<p> {{ review.ticket.title}} </p>
+<p><img height="100" src="/media/{{ticket.image}}"></p>
+<form id="form_review"  method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" href="{% url 'ticketing:review_edit' review.id %}">Votre review</button>
+</form>
 {% endblock %}
