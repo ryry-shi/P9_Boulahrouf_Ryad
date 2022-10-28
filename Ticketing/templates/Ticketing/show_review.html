@@ -5,10 +5,9 @@
             <p style="text-align:right">{{ticket.time_created}}</p>
             {{ review.ticket_review }}
             {% if ticket.review.user == user %}
-
-            <p>Vous avez publié une critique sur l'un de vos ticket</p>
+                <p>Vous avez publié une critique</p>
             {% else %}
-            <p>Vous avez publié une critique sur le ticket de {{ ticket.review.user }}</p>
+                <p>{{ ticket.review.user }} a posté une critique</p>
             {% endif %}          
             <p>{{ticket.review.headline}}</p>
             <p>{{ticket.review.body}} - {{ticket.review.rating}}</p>

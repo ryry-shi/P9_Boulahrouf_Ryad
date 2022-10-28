@@ -28,6 +28,14 @@ def ticket_edit(request, ticket_id):
         form = FormTicketing(instance=ticket) 
         return render(request, "Ticketing/ticket_edit.html", {"form":form, "ticket":ticket})
 
+def remove_ticket(request, ticket_id):
+    review = Ticket.objects.get(pk=ticket_id)
+    if review.user == request.user:
+        review.delete()
+        return redirect("ticketing:posts")
+    else:
+        raise PermissionDenied()
+
 def create_review(request, ticket_id: int):
     ticket = Ticket.objects.get(pk=ticket_id)
     if request.method == "POST":
@@ -54,11 +62,6 @@ def create_ticket_with_review(request):
         review.ticket = ticket
         ticket.save()        
         review.save()
-        # form = FormReview(request.POST)
-        # review = form.save(commit=False)
-        # review.user = request.user
-        # review.save()
-        # return render(request,"Ticketing/flux.html", {"ticket":ticket, "review":review})
         return redirect("ticketing:posts")
     else:
         ticket_form = FormTicketing()
@@ -85,7 +88,10 @@ def flux_view(request):
 
 def posts_view(request):
     tickets = Ticket.objects.filter(user=request.user)
-    return render(request, "Ticketing/posts.html",{"user":request.user, "tickets":tickets})
+    reviews = Review.objects.filter(user=request.user)
+    return render(request, "Ticketing/posts.html",{"user":request.user, "tickets":tickets, "reviews":reviews})
+
+
 
 
 def remove_review(request, review_id):

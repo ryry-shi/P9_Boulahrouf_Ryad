@@ -3,16 +3,24 @@
 {% block content %}
 <h1>Posts</h1>
     <table>
+        <tbody>
     {% for ticket in tickets %} 
+        <td>{% include "Ticketing/ticket.html" %}
+    <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
+    <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span>
     {% if ticket.review.ticket  %}
         {% include "Ticketing/show_review.html" %}
         <span><Button><a href="{% url 'ticketing:review_edit' ticket.review.id %}">Modifier</a></Button></span>
         <span><Button><a href="{% url 'ticketing:remove_review' ticket.review.id %}">Supprimer</a></Button></span>
     {% elif ticket and ticket.review.user %}
         {% include "Ticketing/show_review_direct_ticket.html" %}
-    {% else ticket.review is None %}
+    {% else %}
+        <p></p>
     {% endif %}
-    {% endfor %}    
+</td>
+
+    {% endfor %}
+</tbody>
     </table>
 {% endblock %}
 
