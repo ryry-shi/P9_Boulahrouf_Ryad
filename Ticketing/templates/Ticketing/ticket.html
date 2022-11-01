@@ -14,7 +14,7 @@
             <p><img height="100" src="/media/{{ticket.image}}"></p>
             {% if ticket.review %}
             {% else %}
-                <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
+            <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
             {% endif %}
         </td>
     </tbody>

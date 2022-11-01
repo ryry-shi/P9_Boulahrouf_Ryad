@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'following',
-    'Ticketing'
+    'Ticketing',
+    'star_ratings'
 ]
 
 MIDDLEWARE = [

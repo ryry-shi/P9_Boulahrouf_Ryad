@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 
+<html>
 {% block content %}
 <table>
   <tbody>
@@ -11,8 +12,24 @@
   </tbody>
 </table>
 <form id="form_review"  method="post">
-{% csrf_token %}
-{{ form.as_p }}
+{% csrf_token %} 
+<textarea name="body" cols="40" rows="10" maxlength="8192" id="id_body"></textarea>
+<input type="text" name="headline" maxlength="128" required="" id="id_headline">
+<div id="rating">
+  <input type="radio" name="rating" id="a0" value="0">
+  <label for="a1"></label>
+  <input type="radio" name="rating" id="a1" value="1">
+  <label for="a1"></label>
+  <input type="radio" name="rating" id="a2" value="2">
+  <label for="a2"></label>
+  <input type="radio" name="rating" id="a3" value="3">
+  <label for="a3"></label>
+  <input type="radio" name="rating" id="a4" value="4">
+  <label for="a4"></label>
+  <input type="radio" name="rating" id="a5" value="5">
+  <label for="a5"></label>
+</div>
 <button type="submit" href="{% url 'ticketing:create_review' ticket_id %}">Votre review</button>
 </form>
 {% endblock %}
+</html>
