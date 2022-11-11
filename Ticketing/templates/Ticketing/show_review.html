@@ -1,18 +1,64 @@
-{% block content %}
-<table>
-    <tbody>
-        <td>
-            <p style="text-align:right">{{ticket.time_created}}</p>
-            {{ review.ticket_review }}
-            {% if ticket.review.user == user %}
-                <p>Vous avez publié une critique</p>
-            {% else %}
-                <p>{{ ticket.review.user }} a posté une critique</p>
-            {% endif %}          
-            <p>{{ticket.review.headline}}</p>
-            <p>{{ticket.review.body}} - {{ticket.review.rating}}</p>
-            <p><img height="100" src="/media/{{ticket.image}}"></p>
-        </td>
-    </tbody>
-</table>
-{% endblock %}
+<html>
+    <body>
+    {% block content %}
+        <table class="table table-hover table-dark">
+            <tbody>
+                <td>
+                    <p style="text-align:right">{{ticket.time_created}}</p>
+                    {{ review.ticket.title }} {{ review.ticket.description}}
+                    <p><img height="100" src="/media/{{ticket.image}}"></p>
+                    {% if ticket.review.user == user %}
+                        <p>Vous avez publié une critique</p>
+                        {% if ticket.review.rating == 0 %}
+                            <span name="rating" value="0"></span>
+                            <span name="rating" value="1"></span>
+                            <span name="rating" value="2"></span>
+                            <span name="rating" value="3"></span>
+                            <span name="rating" value="4"></span>
+                            <span name="rating" value="5"></span>
+                        {% elif ticket.review == 1 %}
+                            <span name="rating" value="0" che></span>
+                            <span name="rating" value="1"></span>
+                            <span name="rating" value="2"></span>
+                            <span name="rating" value="3"></span>
+                            <span name="rating" value="4"></span>
+                            <span name="rating" value="5"></span>
+                        {% elif ticket.review == 2 %}
+                            <span name="rating" value="0"></span>
+                            <span name="rating" value="1"></span>
+                            <span name="rating" value="2"></span>
+                            <span name="rating" value="3"></span>
+                            <span name="rating" value="4"></span>
+                            <span name="rating" value="5"></span>
+                        {% elif ticket.review == 3 %}
+                            <span name="rating" value="0"></span>
+                            <span name="rating" value="1"></span>
+                            <span name="rating" value="2"></span>
+                            <span name="rating" value="3"></span>
+                            <span name="rating" value="4"></span>
+                            <span name="rating" value="5"></span>
+                        {% elif ticket.review == 4 %}
+                        <span name="rating" value="0"></span>
+                        <span name="rating" value="1"></span>
+                        <span name="rating" value="2"></span>
+                        <span name="rating" value="3"></span>
+                        <span name="rating" value="4"></span>
+                        <span name="rating" value="5"></span>
+                        {% elif ticket.review == 5 %}
+                        <span name="rating" value="0"></span>
+                        <span name="rating" value="1"></span>
+                        <span name="rating" value="2"></span>
+                        <span name="rating" value="3"></span>
+                        <span name="rating" value="4"></span>
+                        <span name="rating" value="5"></span>
+                        {% endif %}          
+                        {% endif %}          
+                        <p>{{review.headline}}</p>
+                        <p>{{review.body}} - {{review.rating}}</p>
+                        <p><img height="100" src="/media/{{review.ticket.image}}"></p>
+                </td>
+            </tbody>
+        </table>
+    {% endblock %}
+    </body>
+</html>

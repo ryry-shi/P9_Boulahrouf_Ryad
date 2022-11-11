@@ -1,10 +1,26 @@
-
+{% extends "core/base.html" %}
+<html>
+  <body>
 {% block content %}
-
+  <p text-align=center>Créer un ticket</p>
   <form method="post" enctype="multipart/form-data" id="form_ticket">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
-  </form>
-{% endblock %}
+    <div class="form title_ticket">
+      <div class="form-group form-control-sm mb-6">
+      <label for="title" >Titre</label>
+      <input type="text" name="title" max_length=128" id="id_title"></div>
+      <div class="form-group">
+      <label for="description" >Description</label>
+      <input type="text" name="description" maxlength="2048" required="" id="id_description">
+      <div class="form-group">
+      <label for="description" >Image</label>
+      <input type="file" id="id image" name="image" accept="image/png, image/jpeg">
+      <div class="form-group">
 
+      <button type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
+      </div>
+  </form>
+
+{% endblock %}
+</body>
+</html>

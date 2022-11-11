@@ -8,23 +8,26 @@
   </h1>
   <form  action="/following/" method="post">
     {% csrf_token %}
-    <input id="subscribe" type="text" label="followed_user" name="followed_user">
+    <input id="subscribe" type="text" label="followed_user" name="followed_user" width="80%px">
     <button type="submit" ">Envoyer</button>
   </form>
   </div>
   <h1>Vos abonnés</h1>
-
-  <ul class="follower_user"> 
-    {% for following in followings %}
-      <li> {{following.followed_user}}   <a class="unsucrbibed" href="{% url 'following:remove_following' following.followed_user.id %}"> Se désabonner</a>
-      </li>
-    {% endfor %}
-</ul>
+  <div class="container follow">
+      <ul class="follower_user">
+      {% for following in followings %}
+        <li> {{following.followed_user}}   <a class="unsucrbibed" href="{% url 'following:remove_following' following.followed_user.id %}"> Se désabonner</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  
 <h1>Vos abonnements</h1>
-  <ul class="follower_user">
+<div class="container following">
     {% for follower in followers %}
           <li>{{follower.user}} </li>
     {% endfor %}
 </ul>
+</div>
 
 {% endblock %}

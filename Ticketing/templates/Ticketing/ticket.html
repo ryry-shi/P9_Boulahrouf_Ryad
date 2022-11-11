@@ -1,23 +1,29 @@
-
-{% block content %}
-<table>
-    <tbody>
-        <td>
-            <p style="text-align:right">{{ticket.time_created}}</p>
-            {% if ticket.user == user %}
-                <p> Vous avez demandé une critique</p>
-            {% else %}
-                <p> {{ticket.user}} a demandé une critique </p>
-            {% endif %}          
-            <p>{{ticket.title}} </p>
-            <p>{{ticket.description}} </p>
-            <p><img height="100" src="/media/{{ticket.image}}"></p>
-            {% if ticket.review %}
-            {% else %}
-            <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
-            {% endif %}
-        </td>
-    </tbody>
-</table>
-{% endblock %}
-
+<html>
+    {% block content %}
+    <body>
+        <div class="container ticket_flux">
+            <table>
+                <tbody>
+                    <td>
+                        <p style="text-align:right">{{ticket.time_created}}</p>
+                        {% if ticket.user == user %}
+                            <p> Vous avez demandé une critique</p>
+                        {% else %}
+                            <p> {{ticket.user}} a demandé une critique </p>
+                        {% endif %}          
+                        <p>{{ticket.title}} </p>
+                        <p>{{ticket.description}} </p>
+                        <p><img height="100" src="/media/{{ticket.image}}"></p>
+                        {% if ticket.review %}
+                        <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
+                        <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span>
+                        {% else %}
+                        <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
+                        {% endif %}
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    {% endblock %}
+</html>

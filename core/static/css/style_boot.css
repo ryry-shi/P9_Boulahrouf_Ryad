@@ -1,0 +1,53 @@
+.LITReview {
+    height: 100px;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+}
+
+.LITReview span{
+    padding: 10px;
+}
+
+.body{
+    border: 1px solid black;
+}
+
+.follow li{
+    border: 1px solid black;
+}
+
+.li a{
+    text-align: right;
+    border: 2px solid black
+}
+
+.unsucrbibed{
+    float: right;
+    border-left: 1px solid black;
+    }
+    
+.ticket_flux{
+    border: 2px solid black;
+}
+
+.input[type="radio"]{
+    background:url("https://www.1two.org/design/star.png") ;
+}
+
+.title.ticket{
+    height: auto;
+}
+
+#subscribe{
+    width: 600px;
+    height: 50px;
+  }
+
+.nav h1{
+    align-items: center;
+}
+h1{
+    font-size: 25px;
+}
+

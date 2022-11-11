@@ -1,13 +1,18 @@
 {% extends "core/base.html" %}
 
+<html>
+    <body>
 {% block content %}
-<h1>Posts</h1>
-    <table>
-        <tbody>
+<div class="container">
+
     {% for ticket in tickets %} 
-        <td>{% include "Ticketing/ticket.html" %}
-    <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
-    <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span>
+    <div class="form title_ticket">
+
+    <td>{% include "Ticketing/ticket.html" %}
+    </td>
+    </div>
+    <!-- <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
+    <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span> -->
     {% if ticket.review.ticket  %}
         {% include "Ticketing/show_review.html" %}
         <span><Button><a href="{% url 'ticketing:review_edit' ticket.review.id %}">Modifier</a></Button></span>
@@ -18,9 +23,9 @@
         <p></p>
     {% endif %}
 </td>
-
+</div>
     {% endfor %}
-</tbody>
-    </table>
 {% endblock %}
 
+    </body>
+</html>
