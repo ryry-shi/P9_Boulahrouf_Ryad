@@ -3,14 +3,24 @@
     border: 1px solid black;
     text-align: center;
     display: flex;
+    text-align: center!important
 }
 
 .LITReview span{
     padding: 10px;
 }
 
-.body{
-    border: 1px solid black;
+.ticket_flux_article{
+    border: 2px solid black;
+}
+
+.box{
+    border: 2px solid black;
+}
+
+.body {
+    border: 2px solid black;
+    text-align: center!important;
 }
 
 .follow li{

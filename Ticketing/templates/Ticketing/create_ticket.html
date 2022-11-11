@@ -2,25 +2,27 @@
 <html>
   <body>
 {% block content %}
+<div class="container text-center">
   <p text-align=center>Créer un ticket</p>
+  <div container="container">
   <form method="post" enctype="multipart/form-data" id="form_ticket">
     {% csrf_token %}
-    <div class="form title_ticket">
-      <div class="form-group form-control-sm mb-6">
+      <div class="form-group">
       <label for="title" >Titre</label>
-      <input type="text" name="title" max_length=128" id="id_title"></div>
+      <input type="text" class="form-control"  name="title" max_length=128" id="id_title"></div>
       <div class="form-group">
       <label for="description" >Description</label>
-      <input type="text" name="description" maxlength="2048" required="" id="id_description">
+      <input type="text" class="form-control"  name="description" maxlength="2048" required="" id="id_description"></div>
       <div class="form-group">
-      <label for="description" >Image</label>
-      <input type="file" id="id image" name="image" accept="image/png, image/jpeg">
+      <label for="image" >Image</label>
+      <input type="file" class="form-control" id="id_image" name="image" accept="image/png, image/jpeg"></div>
       <div class="form-group">
-
-      <button type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
+      <button type="submit" class="btn btn-secondary" type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
       </div>
+  </div>
   </form>
-
+</div>
+</div>
 {% endblock %}
 </body>
 </html>

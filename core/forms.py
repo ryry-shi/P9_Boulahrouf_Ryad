@@ -5,7 +5,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username']
-        labels = {"username":"mdp"}
+        labels = {"username":"username"}
 
 
 # class LoginForm(ModelForm):

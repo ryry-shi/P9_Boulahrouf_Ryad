@@ -11,6 +11,7 @@ class Ticket(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
 
 
+
 class Review(models.Model):
     ticket = models.OneToOneField(to=Ticket,on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])

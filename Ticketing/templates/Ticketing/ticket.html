@@ -1,8 +1,8 @@
 <html>
     {% block content %}
     <body>
-        <div class="container ticket_flux">
-            <table>
+        <div class="container text-center" >
+            <table class="table table-hover table-dark">
                 <tbody>
                     <td>
                         <p style="text-align:right">{{ticket.time_created}}</p>
@@ -11,12 +11,17 @@
                         {% else %}
                             <p> {{ticket.user}} a demandé une critique </p>
                         {% endif %}          
-                        <p>{{ticket.title}} </p>
-                        <p>{{ticket.description}} </p>
-                        <p><img height="100" src="/media/{{ticket.image}}"></p>
-                        {% if ticket.review %}
-                        <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
-                        <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span>
+                            <p>{{ticket.title}} </p>
+                            <p>{{ticket.description}} </p>
+                            <p><img height="100" src="/media/{{ticket.image}}"></p>
+                        {% if ticket.review.user == user %}
+                            <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
+                            <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span>
+                        {% elif ticket.review == None %}
+                            {{review.ticket.title}}
+                            {{review.ticket.description}}
+                            {{review.ticket.user}}
+                            <img height="100" src="/media/{{ticket.image}}">
                         {% else %}
                         <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
                         {% endif %}

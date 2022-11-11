@@ -9,10 +9,11 @@
   <form  action="/following/" method="post">
     {% csrf_token %}
     <input id="subscribe" type="text" label="followed_user" name="followed_user" width="80%px">
-    <button type="submit" ">Envoyer</button>
+    <button type="submit"  class="btn btn-secondary" >Envoyer</button>
   </form>
   </div>
-  <h1>Vos abonnés</h1>
+  <h1>Vos abonnements</h1>
+
   <div class="container follow">
       <ul class="follower_user">
       {% for following in followings %}
@@ -21,9 +22,10 @@
       {% endfor %}
     </ul>
   </div>
-  
-<h1>Vos abonnements</h1>
+  <h1>Vos abonnés</h1>
+
 <div class="container following">
+  <ul class="follower_user">
     {% for follower in followers %}
           <li>{{follower.user}} </li>
     {% endfor %}

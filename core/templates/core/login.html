@@ -1,14 +1,16 @@
 {% extends "core/base.html" %}
 
 <html>
+  <body>
+
 {% block content %}
-<body>
 <div class="container">
   <div class="row">
     <article class="col-md-6">
       <div class="register">
         <p>Inscrivez-vous maintenant</p>
-        <a href="{% url 'register' %}">S'inscrire</a>
+        <a class="btn btn-primary" href="{% url 'register' %}" role="button">S'inscrire</button></a>
+      </div>
     </article>
     <article class="col-md-6">
       <div class="login">
@@ -16,10 +18,13 @@
         <form method="post">
           {% csrf_token %}
           {{ form.as_p }}
-        <button type="submit" href="{% url 'login' %}"> Se connecter </button>
-      </form>
+        <button type="submit"  class="btn btn-secondary" href="{% url 'login' %}"> Se connecter </button>
+        </form>
+      </div>
     </article>
   </div>
-</body>
+</div>
 
-{% endblock %}</html>
+{% endblock %}
+</body>
+</html>

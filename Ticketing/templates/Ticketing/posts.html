@@ -3,14 +3,9 @@
 <html>
     <body>
 {% block content %}
-<div class="container">
-
+<div class="containe text-center">
     {% for ticket in tickets %} 
-    <div class="form title_ticket">
-
-    <td>{% include "Ticketing/ticket.html" %}
-    </td>
-    </div>
+    {% include "Ticketing/ticket.html" %}
     <!-- <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
     <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span> -->
     {% if ticket.review.ticket  %}
@@ -24,6 +19,9 @@
     {% endif %}
 </td>
 </div>
+    {% endfor %}
+    {% for review in reviews %}
+        {% include "Ticketing/show_review.html" %}
     {% endfor %}
 {% endblock %}
 

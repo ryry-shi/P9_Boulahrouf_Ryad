@@ -1,14 +1,49 @@
 {% extends "core/base.html" %}
 {% block content %}
+<div class="container text-center">
+
 <p>Modifier votre critique</p>
-<p>Vous êtes en train de poster en réponse à</p>
+{% include "Ticketing/ticket.html" %}
+<!-- <p>Vous êtes en train de poster en réponse à</p>
 <p style="text-align:right">{{ticket.time_created}}</p>
 <p>{{review.ticket.user}} a demandé une critique </p>            
-<p> {{ review.ticket.title}} </p>
+<p> {{ review.ticket.title}} </p> -->
 <p><img height="100" src="/media/{{ticket.image}}"></p>
-<form id="form_review"  method="post">
+<form id="form_review"  method="post">  
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" href="{% url 'ticketing:review_edit' review.id %}">Votre review</button>
+  <table class="table caption-top">
+  <tr>
+  <td>
+  <label for="body">Titre</label>
+  <input type="text" name="headline" value="{{review.headline}}" maxlength="128" required="" id="id_headline">
+  </td>
+  </tr>
+  <tr><td>
+  <label for="body">Commentaire</label>
+  <textarea name="body" value="{{review.body}}" cols="40" rows="10" maxlength="8192" id="id_body"></textarea>
+  </td></tr>
+  <tr><td>
+  <div class="star" id="rating" value="{{review.rating}}">
+    <label for="rating">Note</label>
+    <input type="radio" name="rating" id="a0" value="0">
+    <label for="a1">- 0</label>
+    <input type="radio" name="rating" id="a1" value="1">
+    <label for="a1">- 1</label>
+    <input type="radio" name="rating" id="a2" value="2">
+    <label for="a2">- 2</label>
+    <input type="radio" name="rating" id="a3" value="3">
+    <label for="a3">- 3</label>
+    <input type="radio" name="rating" id="a4" value="4">
+    <label for="a4">- 4</label>
+    <input type="radio" name="rating" id="a5" value="5">
+    <label for="a5">- 5</label>
+  </td>
+  </tr>
+
+</div>
+</table>
+  <button type="submit" href="{% url 'ticketing:review_edit' review.id %}">Envoyer</button>
 </form>
+</div>
+
 {% endblock %}
