@@ -1,14 +1,17 @@
 <html>
     <body>
     {% block content %}
+    {% if ticket.review.user == user %}
+        <p> Vous avez publié une critique </p>
+    {% else %}
+        <p> {{ ticket.review.user }} a publié une critique</p>
+    {% endif %}
         <table class="table table-hover table-dark">
             <tbody>
                 <td>
                     <p style="text-align:right">{{ticket.time_created}}</p>
-                    {{ review.ticket.title }} {{ review.ticket.description}}
+                    {{ ticket.review.headline }} {{ ticket.review.body}}
                     <p><img height="100" src="/media/{{ticket.image}}"></p>
-                    {% if ticket.review.user == user %}
-                        <p>Vous avez publié une critique</p>
                         {% if ticket.review.rating == 0 %}
                             <span name="rating" value="0"></span>
                             <span name="rating" value="1"></span>
@@ -17,7 +20,7 @@
                             <span name="rating" value="4"></span>
                             <span name="rating" value="5"></span>
                         {% elif ticket.review == 1 %}
-                            <span name="rating" value="0" che></span>
+                            <span name="rating" value="0"></span>
                             <span name="rating" value="1"></span>
                             <span name="rating" value="2"></span>
                             <span name="rating" value="3"></span>
@@ -51,7 +54,6 @@
                         <span name="rating" value="3"></span>
                         <span name="rating" value="4"></span>
                         <span name="rating" value="5"></span>
-                        {% endif %}          
                         {% endif %}          
                         <p>{{review.headline}}</p>
                         <p>{{review.body}} - {{review.rating}}</p>

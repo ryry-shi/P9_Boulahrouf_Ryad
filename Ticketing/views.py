@@ -16,6 +16,7 @@ def create_ticket(request):
         form = FormTicketing() 
     return render(request, "Ticketing/create_ticket.html", {'form': form})
 
+
 def ticket_edit(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
     if request.user != ticket.user:
@@ -27,6 +28,7 @@ def ticket_edit(request, ticket_id):
     else:
         form = FormTicketing(instance=ticket) 
         return render(request, "Ticketing/ticket_edit.html", {"form":form, "ticket":ticket})
+
 
 def remove_ticket(request, ticket_id):
     review = Ticket.objects.get(pk=ticket_id)
@@ -48,7 +50,6 @@ def create_review(request, ticket_id: int):
     else:
         form = FormReview() 
         return render(request, "Ticketing/create_review.html", {"form":form,"ticket_id":ticket_id, "ticket":ticket})
-    
 
 
 def create_ticket_with_review(request):

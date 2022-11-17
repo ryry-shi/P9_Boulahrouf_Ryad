@@ -5,9 +5,71 @@
 {% block content %}
 <div class="containe text-center">
     {% for ticket in tickets %} 
-    {% include "Ticketing/ticket.html" %}
-    <!-- <span><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button></span>
-    <span><Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></span> -->
+    <table class="table border border-dark">
+        <tbody>
+            <td>
+                <p style="text-align:right">{{ticket.time_created}}</p>
+                {% if ticket.user == user %}
+                    <p> Vous avez demandé une critique</p>
+                {% else %}
+                    <p> {{ticket.user}} a demandé une critique </p>
+                {% endif %}          
+                    <p>{{ticket.title}} </p>
+                    <p>{{ticket.description}} </p>
+                    <p><img height="100" src="/media/{{ticket.image}}"></p>
+            </td>
+        </tbody>
+        <td><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button>
+            <Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></td>
+    </table>
+    {% endfor %}
+
+ 
+    {% for review in reviews %}
+    <table class="table border border-dark">
+    <tbody>
+        <thead><tr>Vous avez publié une critique<td>
+            {{review.ticket.time_created}}
+        </td>
+        </thead>
+        <tr></tr><td>{{ review.headline }}  {{ review.rating}}</td></tr>
+        <tr> <td>{{ review.body}}</td></tr>
+        <tr>
+        <td class="table border border-dark" >
+            <p style="text-align:right">{{ticket.time_created}}</p>
+            {% if ticket.user == user %}
+                <p> Vous avez demandé une critique</p>
+            {% else %}
+                <p> {{review.user}} a demandé une critique </p>
+            {% endif %}          
+            <p>{{review.ticket.title }}</p>
+            <p>{{review.ticket.description}}</p>
+            <p><img height="100" src="/media/{{review.ticket.image}}"></p>
+        </td>
+        </tr>
+    </tbody>
+    <td><Button><a href="{% url 'ticketing:review_edit' review.id %}">Modifier</a></Button>
+        <Button><a href="{% url 'ticketing:remove_review' review.id %}">Supprimer</a></Button></td>
+</table>
+    {% endfor %}
+    <!-- {% for review in reviews %}
+    <table class="table border border-dark">
+        <tbody>
+            <td>
+                <p style="text-align:right">{{ticket.time_created}}</p>
+                {% if ticket.user == user %}
+                    <p> Vous avez demandé une critique</p>
+                {% else %}
+                    <p> {{ticket.user}} a demandé une critique </p>
+                {% endif %}          
+                    <p>{{ticket.title}} </p>
+                    <p>{{ticket.description}} </p>
+                    <p><img height="100" src="/media/{{ticket.image}}"></p>
+            </td>
+        </tbody>
+
+    </table> -->
+    <!-- {% endfor %}
     {% if ticket.review.ticket  %}
         {% include "Ticketing/show_review.html" %}
         <span><Button><a href="{% url 'ticketing:review_edit' ticket.review.id %}">Modifier</a></Button></span>
@@ -17,13 +79,9 @@
     {% else %}
         <p></p>
     {% endif %}
-</td>
-</div>
-    {% endfor %}
-    {% for review in reviews %}
-        {% include "Ticketing/show_review.html" %}
-    {% endfor %}
-{% endblock %}
+<!-- </div> -->
 
+    
+{% endblock %}
     </body>
 </html>

@@ -4,40 +4,56 @@
   <body>
 {% block content %}
 
-{% include "Ticketing/ticket.html" %}
-<!-- <table>
+<table class="table table-sm">
+  <thead>
+    <tr>
+    Vous êtes en train de poster en réponse à
+  </tr>
+  </thead>
   <tbody>
-          <p style="text-align:right">{{ticket.time_created}}</p>
-          <p>{{ticket.user}} a demandé une critique </p>            
-          <p>{{ticket.title}} </p>
-          <p>{{ticket.description}} </p>
-          <p><img height="100" src="/media/{{ticket.image}}"></p>
+      <tr style="text-align:right" scopre="1">
+        <td>{{ticket.time_created}}</td>
+      </tr>
+      <tr style="text-align:right" scopre="1">
+        <td>{{ticket.title}}</td>
+      </tr>      <tr style="text-align:right" scopre="1">
+        <td>{{ticket.description}}</td>
+      </tr>      <tr style="text-align:right" scopre="1">
+        <td><img height="100" src="/media/{{ticket.image}}"></td>
+      </tr>      <tr style="text-align:right" scopre="1"></tr>
   </tbody>
-</table> -->
+</table>
 
 <div class="container">
   <h1>Critique</h1>
   <form id="form_review"  method="post">
   {% csrf_token %} 
-  <label for="healine">Titre</label>
-  <input type="text" name="headline" maxlength="128" required="" id="id_headline">
-  <label for="body">Commentaire</label>
-  <textarea name="body" cols="40" rows="10" maxlength="8192" id="id_body"></textarea>
+  <div class="form-group">
+    <label for="headline" class="form-label">Titre</label>
+    <input type="text" class="form-control" name="headline" id="id_body">
+  </div>
+  <div class="form-group">
+    <label for="body" class="form-label">Commentaire</label>
+    <textarea class="form-control" name="body" id="id_body" rows="3"></textarea>
+  </div>
+  <div class="form-group">
   <div class="star" id="rating">
+    <b form></b>
     <input type="radio" name="rating" id="a0" value="0">
-    <label for="a1"></label>
+    <label for="a1">- 0</label>
     <input type="radio" name="rating" id="a1" value="1">
-    <label for="a1"></label>
+    <label for="a1">- 1</label>
     <input type="radio" name="rating" id="a2" value="2">
-    <label for="a2"></label>
+    <label for="a2">- 2</label>
     <input type="radio" name="rating" id="a3" value="3">
-    <label for="a3"></label>
+    <label for="a3">- 3</label>
     <input type="radio" name="rating" id="a4" value="4">
-    <label for="a4"></label>
+    <label for="a4">- 4</label>
     <input type="radio" name="rating" id="a5" value="5">
-    <label for="a5"></label>
+    <label for="a5">- 5</label>
+    </div>
 </div>
-<button type="submit" href="{% url 'ticketing:create_review' ticket_id %}">Votre review</button>
+<button  class="btn btn-secondary" type="submit" href="{% url 'ticketing:create_review' ticket_id %}">Votre review</button>
 </form>
 {% endblock %}
   </body>

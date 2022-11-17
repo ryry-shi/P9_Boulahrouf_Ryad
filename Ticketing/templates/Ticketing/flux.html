@@ -6,18 +6,17 @@
 <button class="ticket"><a href="{% url 'ticketing:create_ticket_with_review'%}">Créer une critique directe</a></button>
     {% for ticket in tickets %}
     <article class="ticket_flux_article">
-
-            {% include "Ticketing/ticket.html" %}
-        </article>
-
-            {% if ticket.review %}
-                {% include "Ticketing/show_review.html" %}
-            {% endif %}
+        {% include "Ticketing/ticket.html" %}
+        {% if ticket.review %}
+        {% else %}
+        <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
+        {% endif %}
+    </article>
+    {% if ticket.review %}
+        {% include "Ticketing/show_review.html" %}
+    {% endif %}
     {% endfor %}
 
-    {% for i in review %}
-            {{ review.ticket_review }}
-    {% endfor %}
 
 </div>
     {% endblock %}
