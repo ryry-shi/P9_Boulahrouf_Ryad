@@ -20,10 +20,10 @@ Description du programme:
     - python main.py (windows)
     - python3 main.py (Unix)
     - python manage.py runserver( Impossible sans le module django dans requirement.Txt)
-    - Créer votre compte sur la première page 
+    - Créer votre compte sur la première page
     - Logger-vous ensuite avec vos identifiant
     - Page flux Deux bouton création de ticket pour ensuite créer une critique et un autre pour créer un ticket et une critique
-    - Page Abonnement Barre de texte entrer le nom d'une personne que auquel vous voulez vous abonnez, possibilitéz de vous désabonnez
+    - Page Abonnement Barre de texte entrer le nom d'une personne auquel vous-voulez vous abonnez, possibilitéz de vous désabonnez
     - Page Post Vos post et ticket où vous pouvez les supprimer et modifier 
     
 

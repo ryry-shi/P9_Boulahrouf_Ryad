@@ -1,15 +1,15 @@
 {% extends "core/base.html" %}
 
 {% block content %}
+<title>Flux</title>
 <div class="container text-center">
-<button class="ticket"><a href="{% url 'ticketing:create_ticket'%}">Demande de critique</a></button>
-<button class="ticket"><a href="{% url 'ticketing:create_ticket_with_review'%}">Créer une critique directe</a></button>
+<button  class="btn btn-secondary"><a href="{% url 'ticketing:create_ticket'%}">Demande de critique</a></button>
+<button  class="btn btn-secondary"><a href="{% url 'ticketing:create_ticket_with_review'%}">Créer une critique directe</a></button>
     {% for ticket in tickets %}
     <article class="ticket_flux_article">
         {% include "Ticketing/ticket.html" %}
         {% if ticket.review %}
         {% else %}
-        <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>
         {% endif %}
     </article>
     {% if ticket.review %}

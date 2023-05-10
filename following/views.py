@@ -6,7 +6,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 
 
-
 def following(request):
     followings = request.user.followings.all()
     followers = request.user.followers.all()
@@ -19,12 +18,17 @@ def following(request):
                 following.save()
             except ObjectDoesNotExist:
                 messages.error(request, f"Utilisateur { username } n'existe pas .")
-    return render(request, "following/following.html", {'followings': followings, 'followers': followers})
+    return render(
+        request,
+        "following/following.html",
+        {"followings": followings, "followers": followers},
+    )
 
 
 def remove_following(request, followed_user_id):
     followed_user_id = User.objects.get(pk=followed_user_id)
-    following = Following.objects.get(user=request.user, followed_user_id=followed_user_id)    
+    following = Following.objects.get(
+        user=request.user, followed_user_id=followed_user_id
+    )
     following.delete()
     return redirect("following:following")
-

@@ -6,12 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('following', '0002_alter_following_followed_user_alter_following_user'),
+        ("following", "0002_alter_following_followed_user_alter_following_user"),
     ]
 
     operations = [
         migrations.AddConstraint(
-            model_name='following',
-            constraint=models.UniqueConstraint(fields=('user', 'followed_user'), name='unique following'),
+            model_name="following",
+            constraint=models.UniqueConstraint(
+                fields=("user", "followed_user"), name="unique following"
+            ),
         ),
     ]

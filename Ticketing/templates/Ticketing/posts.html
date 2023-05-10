@@ -1,8 +1,7 @@
 {% extends "core/base.html" %}
 
-<html>
-    <body>
 {% block content %}
+<title>Voir vos propres post</title>
 <div class="containe text-center">
     {% for ticket in tickets %} 
     <table class="table border border-dark">
@@ -38,9 +37,11 @@
         <td class="table border border-dark" >
             <p style="text-align:right">{{ticket.time_created}}</p>
             {% if ticket.user == user %}
-                <p> Vous avez demandé une critique</p>
+                <!-- <p> Vous avez demandé une critique</p> -->
             {% else %}
-                <p> {{review.user}} a demandé une critique </p>
+            {% include "Ticketing/show_review.html" %}
+
+                <p> {{review.ticket.user}} a demandé une critique </p>
             {% endif %}          
             <p>{{review.ticket.title }}</p>
             <p>{{review.ticket.description}}</p>
@@ -52,36 +53,4 @@
         <Button><a href="{% url 'ticketing:remove_review' review.id %}">Supprimer</a></Button></td>
 </table>
     {% endfor %}
-    <!-- {% for review in reviews %}
-    <table class="table border border-dark">
-        <tbody>
-            <td>
-                <p style="text-align:right">{{ticket.time_created}}</p>
-                {% if ticket.user == user %}
-                    <p> Vous avez demandé une critique</p>
-                {% else %}
-                    <p> {{ticket.user}} a demandé une critique </p>
-                {% endif %}          
-                    <p>{{ticket.title}} </p>
-                    <p>{{ticket.description}} </p>
-                    <p><img height="100" src="/media/{{ticket.image}}"></p>
-            </td>
-        </tbody>
-
-    </table> -->
-    <!-- {% endfor %}
-    {% if ticket.review.ticket  %}
-        {% include "Ticketing/show_review.html" %}
-        <span><Button><a href="{% url 'ticketing:review_edit' ticket.review.id %}">Modifier</a></Button></span>
-        <span><Button><a href="{% url 'ticketing:remove_review' ticket.review.id %}">Supprimer</a></Button></span>
-    {% elif ticket and ticket.review.user %}
-        {% include "Ticketing/show_review_direct_ticket.html" %}
-    {% else %}
-        <p></p>
-    {% endif %}
-<!-- </div> -->
-
-    
 {% endblock %}
-    </body>
-</html>

@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
-<html>
-  <body>
 {% block content %}
+<title>Créer un ticket</title>
+
 <div class="container text-center">
   <p text-align=center>Créer un ticket</p>
   <div container="container">
@@ -9,13 +9,13 @@
     {% csrf_token %}
       <div class="form-group">
       <label for="title" >Titre</label>
-      <input type="text" class="form-control"  name="title" max_length=128" id="id_title"></div>
+      <input type="text" class="form-control"  name="title" max_length=128" required="" id="id_title"></div>
       <div class="form-group">
       <label for="description" >Description</label>
       <input type="text" class="form-control"  name="description" maxlength="2048" required="" id="id_description"></div>
       <div class="form-group">
       <label for="image" >Image</label>
-      <input type="file" class="form-control" id="id_image" name="image" accept="image/png, image/jpeg"></div>
+      <input type="file" class="form-control" id="id_image" name="image" required="" accept="image/png, image/jpeg"></div>
       <div class="form-group">
       <button type="submit" class="btn btn-secondary" type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
       </div>
@@ -24,5 +24,3 @@
 </div>
 </div>
 {% endblock %}
-</body>
-</html>

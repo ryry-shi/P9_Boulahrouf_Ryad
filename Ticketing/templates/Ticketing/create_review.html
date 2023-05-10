@@ -1,13 +1,12 @@
 {% extends "core/base.html" %}
 
-<html>
-  <body>
-{% block content %}
 
+{% block content %}
+<title>Créer une critique(en réponse à un ticket)</title>
 <table class="table table-sm">
   <thead>
     <tr>
-    Vous êtes en train de poster en réponse à
+    Vous êtes en train de poster en réponse à {{ticket.user}}
   </tr>
   </thead>
   <tbody>
@@ -23,38 +22,35 @@
       </tr>      <tr style="text-align:right" scopre="1"></tr>
   </tbody>
 </table>
-
 <div class="container">
   <h1>Critique</h1>
   <form id="form_review"  method="post">
   {% csrf_token %} 
   <div class="form-group">
     <label for="headline" class="form-label">Titre</label>
-    <input type="text" class="form-control" name="headline" id="id_body">
+    <input type="text" class="form-control" name="headline" required=""  id="id_body">
   </div>
   <div class="form-group">
     <label for="body" class="form-label">Commentaire</label>
-    <textarea class="form-control" name="body" id="id_body" rows="3"></textarea>
+    <textarea class="form-control" name="body" id="id_body" required=""  rows="3"></textarea>
   </div>
   <div class="form-group">
   <div class="star" id="rating">
     <b form></b>
-    <input type="radio" name="rating" id="a0" value="0">
+    <input type="radio" name="rating" required="" id="a0" value="0">
     <label for="a1">- 0</label>
-    <input type="radio" name="rating" id="a1" value="1">
+    <input type="radio" name="rating" required="" id="a1" value="1">
     <label for="a1">- 1</label>
-    <input type="radio" name="rating" id="a2" value="2">
+    <input type="radio" name="rating"required=""  id="a2" value="2">
     <label for="a2">- 2</label>
-    <input type="radio" name="rating" id="a3" value="3">
+    <input type="radio" name="rating" required="" id="a3" value="3">
     <label for="a3">- 3</label>
-    <input type="radio" name="rating" id="a4" value="4">
+    <input type="radio" name="rating" required="" id="a4" value="4">
     <label for="a4">- 4</label>
-    <input type="radio" name="rating" id="a5" value="5">
+    <input type="radio" name="rating" required="" id="a5" value="5">
     <label for="a5">- 5</label>
     </div>
 </div>
 <button  class="btn btn-secondary" type="submit" href="{% url 'ticketing:create_review' ticket_id %}">Votre review</button>
 </form>
 {% endblock %}
-  </body>
-</html>

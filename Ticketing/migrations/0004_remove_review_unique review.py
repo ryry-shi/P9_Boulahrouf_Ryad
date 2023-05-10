@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Ticketing', '0003_remove_ticket_unique ticketing_review_unique review'),
+        ("Ticketing", "0003_remove_ticket_unique ticketing_review_unique review"),
     ]
 
     operations = [
         migrations.RemoveConstraint(
-            model_name='review',
-            name='unique review',
+            model_name="review",
+            name="unique review",
         ),
     ]

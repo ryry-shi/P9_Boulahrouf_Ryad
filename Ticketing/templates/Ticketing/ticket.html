@@ -19,7 +19,7 @@
                             {{review.ticket.description}}
                             {{review.ticket.user}}
                             <img height="100" src="/media/{{ticket.image}}">
-                        {% elif ticket.review %}
+                        {% elif ticket.user == user or ticket.review %}
                             <p></p>
                         {% else %}
                         <button text="submit"><a href="{% url 'ticketing:create_review' ticket.id %}"> Créer une critique </a></button>

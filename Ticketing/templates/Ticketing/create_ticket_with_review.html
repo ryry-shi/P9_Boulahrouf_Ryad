@@ -1,5 +1,9 @@
 {% extends "core/base.html" %}
 {% block content %}
+<title>Créer une critique(pas en réponse à un ticket)</title>
+<table class="table border border-dark">
+  <tr><td>
+<P>Livre description</P>
 <form method="post" enctype="multipart/form-data" id="form_ticket">
     {% csrf_token %}
     <div class="form-group">
@@ -11,20 +15,37 @@
       <div class="form-group">
       <label for="image" >Image</label>
       <input type="file" class="form-control" id="id_image" name="image" accept="image/png, image/jpeg"></div>
-      <div class="form-group">
-      <button type="submit" class="btn btn-secondary" type="submit" href="{% url 'ticketing:create_ticket' %}">Votre billet</button>
-      </div>
+  </div></td></tr></table>
+  <table class="table border border-dark">
+    <tr><td>
+  <p>Critique</p>
+  <div class="form-group">
+    <label for="headline" class="form-label">Titre</label>
+    <input type="text" class="form-control" name="headline" id="id_body">
   </div>
-    <textarea name="body" cols="40" rows="10" maxlength="8192" id="id_body"></textarea>
-    <input type="text" name="headline" maxlength="128" required="" id="id_headline">
-    <div class="star-cb-group">
-      <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-      <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
-      <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-      <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-      <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+  <div class="form-group">
+    <label for="body" class="form-label">Commentaire</label>
+    <textarea class="form-control" name="body" id="id_body" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+  <div class="star" id="rating">
+    <b form></b>
+    <input type="radio" name="rating" id="a0" value="0">
+    <label for="a1">- 0</label>
+    <input type="radio" name="rating" id="a1" value="1">
+    <label for="a1">- 1</label>
+    <input type="radio" name="rating" id="a2" value="2">
+    <label for="a2">- 2</label>
+    <input type="radio" name="rating" id="a3" value="3">
+    <label for="a3">- 3</label>
+    <input type="radio" name="rating" id="a4" value="4">
+    <label for="a4">- 4</label>
+    <input type="radio" name="rating" id="a5" value="5">
+    <label for="a5">- 5</label>
     </div>
-  <button type="submit" href="{% url 'ticketing:create_ticket_with_review' %}">Sauvegarder</button>
+</div>
+</div></td></tr></table>
+
+  <button type="submit"  class="btn btn-secondary" href="{% url 'ticketing:create_ticket_with_review' %}">Sauvegarder</button>
 </form>
 {% endblock %}

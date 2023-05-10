@@ -11,23 +11,29 @@ def create_ticket(request):
         ticket = form.save(commit=False)
         ticket.user = request.user
         ticket.save()
-        return render(request,"Ticketing/flux.html", {"form": form,"tickets":tickets})
+        return render(
+            request, "Ticketing/flux.html", {"form": form, "tickets": tickets}
+        )
     else:
-        form = FormTicketing() 
-    return render(request, "Ticketing/create_ticket.html", {'form': form})
+        form = FormTicketing()
+    return render(request, "Ticketing/create_ticket.html", {"form": form})
 
 
 def ticket_edit(request, ticket_id):
     ticket = Ticket.objects.get(pk=ticket_id)
-    if request.user != ticket.user:
-        return redirect("ticketing:flux")
+    # if request.user != ticket.user:
+    #     return redirect("ticketing:flux")
+    print(ticket.image)
     if request.method == "POST":
-        form = FormTicketing(request.POST, instance=ticket)
-        form.save()
+        form = FormTicketing(request.POST, request.FILES, instance=ticket)
+        ticket = form.save()
         return redirect("ticketing:flux")
+
     else:
-        form = FormTicketing(instance=ticket) 
-        return render(request, "Ticketing/ticket_edit.html", {"form":form, "ticket":ticket})
+        form = FormTicketing(instance=ticket)
+        return render(
+            request, "Ticketing/ticket_edit.html", {"form": form, "ticket": ticket}
+        )
 
 
 def remove_ticket(request, ticket_id):
@@ -37,6 +43,7 @@ def remove_ticket(request, ticket_id):
         return redirect("ticketing:posts")
     else:
         raise PermissionDenied()
+
 
 def create_review(request, ticket_id: int):
     ticket = Ticket.objects.get(pk=ticket_id)
@@ -48,8 +55,12 @@ def create_review(request, ticket_id: int):
         review.save()
         return redirect("ticketing:flux")
     else:
-        form = FormReview() 
-        return render(request, "Ticketing/create_review.html", {"form":form,"ticket_id":ticket_id, "ticket":ticket})
+        form = FormReview()
+        return render(
+            request,
+            "Ticketing/create_review.html",
+            {"form": form, "ticket_id": ticket_id, "ticket": ticket},
+        )
 
 
 def create_ticket_with_review(request):
@@ -61,14 +72,17 @@ def create_ticket_with_review(request):
         ticket.user = request.user
         review.user = request.user
         review.ticket = ticket
-        ticket.save()        
+        ticket.save()
         review.save()
         return redirect("ticketing:posts")
     else:
         ticket_form = FormTicketing()
         review_form = FormReview()
-        return render(request, "Ticketing/create_ticket_with_review.html", {"ticket_form":ticket_form, "review_form":review_form})
-
+        return render(
+            request,
+            "Ticketing/create_ticket_with_review.html",
+            {"ticket_form": ticket_form, "review_form": review_form},
+        )
 
 
 def review_edit(request, review_id: int):
@@ -79,20 +93,25 @@ def review_edit(request, review_id: int):
             form.save()
             return redirect("ticketing:posts")
     else:
-        form = FormReview(instance=review) 
-        return render(request, "Ticketing/review_edit.html", {"form":form, "review":review})
+        form = FormReview(instance=review)
+        return render(
+            request, "Ticketing/review_edit.html", {"form": form, "review": review}
+        )
+
 
 def flux_view(request):
     tickets = Ticket.objects.all()
-    return render(request, "Ticketing/flux.html",{"tickets":tickets})
+    return render(request, "Ticketing/flux.html", {"tickets": tickets})
 
 
 def posts_view(request):
     tickets = Ticket.objects.filter(user=request.user)
     reviews = Review.objects.filter(user=request.user)
-    return render(request, "Ticketing/posts.html",{"user":request.user, "tickets":tickets, "reviews":reviews})
-
-
+    return render(
+        request,
+        "Ticketing/posts.html",
+        {"user": request.user, "tickets": tickets, "reviews": reviews},
+    )
 
 
 def remove_review(request, review_id):
