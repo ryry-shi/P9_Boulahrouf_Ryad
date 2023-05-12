@@ -8,9 +8,6 @@
     {% for ticket in tickets %}
     <article class="ticket_flux_article">
         {% include "Ticketing/ticket.html" %}
-        {% if ticket.review %}
-        {% else %}
-        {% endif %}
     </article>
     {% if ticket.review %}
         {% include "Ticketing/show_review.html" %}

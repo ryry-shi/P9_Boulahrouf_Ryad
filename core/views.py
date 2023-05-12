@@ -18,11 +18,6 @@ def register_view(request):
         form = RegisterForm()
     return render(request, "core/register.html", {"form": form})
 
-
-def home_view(request):
-    return render(request, "core/home.html", {"user": request.user})
-
-
 def logout_view(request):
     logout(request)
     return redirect("login")

@@ -8,39 +8,39 @@
     {% csrf_token %}
     <div class="form-group">
       <label for="title" >Titre</label>
-      <input type="text" class="form-control"  name="title" max_length=128" id="id_title"></div>
+      <input type="text" class="form-control"  name="title" required="" max_length=128" id="id_title"></div>
       <div class="form-group">
       <label for="description" >Description</label>
-      <input type="text" class="form-control"  name="description" maxlength="2048" required="" id="id_description"></div>
+      <input type="text" class="form-control"  name="description" required="" maxlength="2048" required="" id="id_description"></div>
       <div class="form-group">
       <label for="image" >Image</label>
-      <input type="file" class="form-control" id="id_image" name="image" accept="image/png, image/jpeg"></div>
+      <input type="file" class="form-control" id="id_image" name="image" required="" accept="image/png, image/jpeg"></div>
   </div></td></tr></table>
   <table class="table border border-dark">
     <tr><td>
   <p>Critique</p>
   <div class="form-group">
     <label for="headline" class="form-label">Titre</label>
-    <input type="text" class="form-control" name="headline" id="id_body">
+    <input type="text" class="form-control" required="" name="headline" id="id_body">
   </div>
   <div class="form-group">
     <label for="body" class="form-label">Commentaire</label>
-    <textarea class="form-control" name="body" id="id_body" rows="3"></textarea>
+    <textarea class="form-control" required="" name="body" id="id_body" rows="3"></textarea>
   </div>
   <div class="form-group">
   <div class="star" id="rating">
     <b form></b>
-    <input type="radio" name="rating" id="a0" value="0">
+    <input type="radio" name="rating" required=""  id="a0" value="0">
     <label for="a1">- 0</label>
-    <input type="radio" name="rating" id="a1" value="1">
+    <input type="radio" name="rating" required="" id="a1" value="1">
     <label for="a1">- 1</label>
-    <input type="radio" name="rating" id="a2" value="2">
+    <input type="radio" name="rating" required="" id="a2" value="2">
     <label for="a2">- 2</label>
-    <input type="radio" name="rating" id="a3" value="3">
+    <input type="radio" name="rating" required="" id="a3" value="3">
     <label for="a3">- 3</label>
-    <input type="radio" name="rating" id="a4" value="4">
+    <input type="radio" name="rating" required="" id="a4" value="4">
     <label for="a4">- 4</label>
-    <input type="radio" name="rating" id="a5" value="5">
+    <input type="radio" name="rating" required="" id="a5" value="5">
     <label for="a5">- 5</label>
     </div>
 </div>
