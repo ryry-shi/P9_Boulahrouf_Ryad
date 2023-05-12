@@ -18,29 +18,21 @@
                     <p><img height="100" src="/media/{{ticket.image}}"></p>
             </td>
         </tbody>
-        <td><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier</a></Button>
-            <Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer</a></Button></td>
+        <td><Button><a href="{% url 'ticketing:ticket_edit' ticket.id %}">Modifier votre ticket</a></Button>
+            <Button><a href="{% url 'ticketing:remove_ticket' ticket.id %}">Supprimer votre ticket</a></Button></td>
     </table>
     {% endfor %}
 
- 
+
     {% for review in reviews %}
     <table class="table border border-dark">
     <tbody>
-        <thead><tr>Vous avez publié une critique<td>
-            {{review.ticket.time_created}}
-        </td>
-        </thead>
-        <tr></tr><td>{{ review.headline }}  {{ review.rating}}</td></tr>
-        <tr> <td>{{ review.body}}</td></tr>
-        <tr>
         <td class="table border border-dark" >
             <p style="text-align:right">{{ticket.time_created}}</p>
             {% if ticket.user == user %}
                 <!-- <p> Vous avez demandé une critique</p> -->
             {% else %}
             {% include "Ticketing/show_review.html" %}
-
                 <p> {{review.ticket.user}} a demandé une critique </p>
             {% endif %}          
             <p>{{review.ticket.title }}</p>
@@ -49,8 +41,6 @@
         </td>
         </tr>
     </tbody>
-    <td><Button><a href="{% url 'ticketing:review_edit' review.id %}">Modifier</a></Button>
-        <Button><a href="{% url 'ticketing:remove_review' review.id %}">Supprimer</a></Button></td>
 </table>
     {% endfor %}
 {% endblock %}
