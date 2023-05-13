@@ -15,6 +15,8 @@ def following(request):
             try:
                 followed_user = User.objects.get(username=username)
                 following = Following(user=request.user, followed_user=followed_user)
+                if Following.objects.filter(user=request.user, followed_user=followed_user).exists():
+                    messages.error(request, f"Utilisateur { username } existe")
                 following.save()
             except ObjectDoesNotExist:
                 messages.error(request, f"Utilisateur { username } n'existe pas .")

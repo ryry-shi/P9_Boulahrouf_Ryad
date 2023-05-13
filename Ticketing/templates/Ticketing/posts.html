@@ -30,7 +30,6 @@
         <td class="table border border-dark" >
             <p style="text-align:right">{{ticket.time_created}}</p>
             {% if ticket.user == user %}
-                <!-- <p> Vous avez demandé une critique</p> -->
             {% else %}
             {% include "Ticketing/show_review.html" %}
                 <p> {{review.ticket.user}} a demandé une critique </p>
@@ -38,8 +37,14 @@
             <p>{{review.ticket.title }}</p>
             <p>{{review.ticket.description}}</p>
             <p><img height="100" src="/media/{{review.ticket.image}}"></p>
+            <span><Button><a href="{% url 'ticketing:review_edit' review.id %}">Modifier votre critique</a></Button></span>
+            <span><Button><a href="{% url 'ticketing:remove_review' review.id %}">Supprimer votre critique</a></Button></span>
+
+
+
         </td>
         </tr>
+
     </tbody>
 </table>
     {% endfor %}
